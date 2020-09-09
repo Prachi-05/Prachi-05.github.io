@@ -1,3 +1,7 @@
+function openInsta($handle){
+  window.open("https://www.instagram.com/" + $handle, "_blank");
+}
+
 //Start Youtube API
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
