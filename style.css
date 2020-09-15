@@ -27,7 +27,6 @@ body {
   color: #E8E8E8; 
   background-image: url("images/blue_bg.png");   
 }
-
 body::-webkit-scrollbar {
   display: none;
 }
@@ -40,6 +39,8 @@ body::-webkit-scrollbar {
   letter-spacing: 4px;
   opacity: 0.9;
 }
+
+
 .navbar li a, .navbar .navbar-brand { 
   color: #0C0C0C !important;
 }
@@ -110,14 +111,13 @@ body::-webkit-scrollbar {
 }
 .bgimg-1{
   position: relative;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100%;
+  width: 100%;
   min-height: 100%;
-  margin:0;
-  padding:0;
-  
+  background: url("images/banner.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 @media screen and (min-width: 800px) {
   .bgimg-1{
@@ -216,13 +216,17 @@ body::-webkit-scrollbar {
   -moz-border-radius: 0 90px 90px 0;
   -webkit-border-radius: 0 90px 90px 0;
   background-color: #09162A;
-  display: inline-block;
+  display: block;
   position: relative;
   float:left;
   /*subpixel bug*/
   margin-left: -1px; 
 }
-
+@media screen and (max-width:684px){
+  .above_links_line{
+    width:50%;
+  }
+}
 .right-button {
   height:70px;
   width:35px;
@@ -234,7 +238,7 @@ body::-webkit-scrollbar {
   -moz-border-radius: 90px 0 0 90px;
   -webkit-border-radius: 90px 0 0 90px;
   background-color: #09162A;
-  display: inline-block;
+  display: block;
   position: relative;
   float:right;
   /*subpixel bug*/
