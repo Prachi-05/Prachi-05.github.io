@@ -1,124 +1,276 @@
-function openInsta($handle){
-  window.open("https://www.instagram.com/" + $handle, "_blank");
+// bezier path for each satellite
+
+const flightPath = {
+    curviness: 1.25,
+    autoRotate:false,
+    values: [
+        {x:400,y:-20},
+        {x:window.outerWidth - window.outerWidth/4,y:-20},
+        // {x:window.outerWidth - 350,y:-20},
+
+        
+        
+
+    ]
+}
+
+const flightPath2= {
+    curviness: 1.25,
+    autoRotate:false,
+    values: [
+        {x:400,y:-20},
+        {x:window.outerWidth - window.outerWidth/2.3,y:-150},
+        // {x:window.outerWidth - 350,y:-20},
+
+        
+        
+
+    ]
+}
+
+const flightPath3= {
+    curviness: 1.25,
+    autoRotate:false,
+    values: [
+        {x:400,y:-20},
+        {x:window.outerWidth - window.outerWidth/1.9,y:150},
+        // {x:window.outerWidth - 350,y:-20},
+
+        
+        
+
+    ]
+}
+
+const flightPath4= {
+    curviness: 1.25,
+    autoRotate:false,
+    values: [
+        {x:400,y:-20},
+        {x:window.outerWidth - window.outerWidth/1.5,y:-130},
+        // {x:window.outerWidth - 350,y:-20},
+
+        
+        
+
+    ]
+}
+
+const flightPath5= {
+    curviness: 1.25,
+    autoRotate:false,
+    values: [
+        {x:400,y:-20},
+        {x:window.outerWidth - window.outerWidth/1.2,y:100},
+        // {x:window.outerWidth - 350,y:-20},
+
+        
+        
+
+    ]
+}
+
+const flightPath6= {
+    curviness: 1.25,
+    autoRotate:false,
+    values: [
+        {x:400,y:-20},
+        {x:window.outerWidth - window.outerWidth/1.15,y:-100},
+        // {x:window.outerWidth - 350,y:-20},
+
+        
+        
+
+    ]
 }
 
 
-$(document).ready(function(){
-  
-  $(window).scroll(function(){
-  	var scroll = $(window).scrollTop();
-	  if (scroll > 100) {
-      $(".navbar").css("background" , "#E8E8E8");   
-	  }
 
-	  else{
-      $(".navbar").css("background" , "linear-gradient(180deg, #E8E8E8 0%, rgba(255,255,255,0) 100%)"); 
-    }
-  })
-});
 
-//watch now hover
-function Start() {
-
-  $('.watch-now-container').on({
-  
-  mouseenter: function () { $('.spray').prop('src', 'images/spray-paint-animation.gif') },
-  
-    });
-  }
-  
-  $(Start);
-//footer icons
-function staticDisplay($id)
-{
-  $('.'+$id+'-static').show();
-  $('.'+$id+'-onhover').hide();
+const movePath = {
+    curviness:1.25,
+    autoRotate:false,
+    values: [
+        {x:0,y:window.outerHeight}
+    ]
 }
 
-function hoverDisplay($id)
-{
-  $('.'+$id+'-static').hide();
-  $('.'+$id+'-onhover').show();
+const tween = new TimelineLite();
+
+
+tween.add(
+
+    TweenLite.to('.issSelector',0.1, {
+        // bezier: flightPath,
+        height:"100vh",
+
+        
+        ease:Power1.easeInOut
+        
+    })
+)
+
+tween.add(
+
+    TweenLite.to('.paleDot',10, {
+        bezier: movePath,
+        // scale:100,
+        opacity:0,
+
+        
+        ease:Power1.easeInOut
+        
+    })
+)
+
+tween.add(
+
+    TweenLite.to('.issInfoCardWrapper',10, {
+        delay:10,
+        // bezier: flightPath,
+        y:100,
+        opacity:0,
+
+        
+        ease:Power1.easeInOut
+        
+    })
+)
+
+
+
+tween.add(
+
+    TweenLite.to('.paper',10, {
+        delay:10,
+        // bezier: flightPath,
+        scale:100,
+        opacity:0,
+
+        
+        ease:Power1.easeInOut
+        
+    })
+)
+
+tween.add(
+    TweenLite.to('.satellite',1, {
+        bezier: flightPath,
+        scale:2,
+    })
+    
+    
+)
+tween.add(
+    TweenLite.to('.satellite2',1, {
+        bezier: flightPath2,
+        scale:1.3,
+    })
+)
+
+
+tween.add(
+    TweenLite.to('.satellite3',1, {
+        bezier: flightPath3,
+        scale:2,
+    }, 0)
+    
+    
+)
+
+tween.add(
+    TweenLite.to('.satellite4',1, {
+        bezier: flightPath4,
+        scale:2,
+    }, 0)
+    
+    
+)
+
+tween.add(
+    TweenLite.to('.satellite5',1, {
+        bezier: flightPath5,
+        scale:1.3,
+    }, 0)
+    
+    
+)
+
+tween.add(
+    TweenLite.to('.satellite6',1, {
+        bezier: flightPath6,
+        scale:1.3,
+    }, 0)
+    
+    
+)
+
+
+
+
+const controller = new ScrollMagic.Controller();
+
+const scene = new ScrollMagic.Scene({
+    triggerElement: '.animation',
+    duration:1000,
+    triggerHook: 0
+})
+.setTween(tween)
+.setPin('.animation')
+.addTo(controller)
+
+
+// Click events
+let aqua = document.getElementById('aqua')
+let aura = document.getElementById('aura')
+let loader = document.getElementById('loader')
+
+
+
+aqua.onclick = () => {
+    loader.classList.add('anim')
+    setTimeout(() => {window.location.href = './includes/aqua-about.html'
+    loader.classList.remove('anim')
+
+}, 800)
+    
+}
+
+aura.onclick = () => {
+    loader.classList.add('anim')
+    setTimeout(() => {window.location.href = './includes/aura-about.html'
+    loader.classList.remove('anim')
+
+}, 800)
   
 }
 
+calipso.onclick = () => {
+    loader.classList.add('anim')
+    setTimeout(() => {window.location.href = './includes/calipso-about.html'
+    loader.classList.remove('anim')
 
-//Start Youtube API
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}, 800)
+}
 
-var youtubeReady = false;
+cloudsat.onclick = () => {
+    loader.classList.add('anim')
+    setTimeout(() => {window.location.href = './includes/cloudsat-about.html'
+    loader.classList.remove('anim')
 
-//Variable for the dynamically created youtube players
-var players= new Array();
-var isPlaying = false;
-function onYouTubeIframeAPIReady(){
-  //The id of the iframe and is the same as the videoId	
-  jQuery(".youtube-video").each(function(i, obj)  {
-     players[obj.id] = new YT.Player(obj.id, {         
-			  videoId: obj.id,
-			    playerVars: {
-			    controls: 2,
-		      rel:0,
-		      autohide:1,
-		      showinfo: 0 ,
-		      modestbranding: 1,
-		      wmode: "transparent",
-		      html5: 1
-       	},    
-        events: {
-          'onStateChange': onPlayerStateChange
-        }
-       });
-     });
-     youtubeReady = true;
-  }
+}, 800)
+}
+
+oco.onclick = () => {
+    loader.classList.add('anim')
+    setTimeout(() => {window.location.href = './includes/oco2-about.html'
+    loader.classList.remove('anim')
+
+}, 800)
+}
+
+// Page animations
+
+var x = document.getElementsByClassName('smoothLink')
 
 
-function onPlayerStateChange(event) {
-  var target_control =  jQuery(event.target.getIframe()).parent().parent().parent().find(".controls");
-  
-  var target_caption = jQuery(event.target.getIframe()).parent().find(".carousel-caption");
-  switch(event.data){
-    case -1:
-      jQuery(target_control).fadeIn(500);
-      jQuery(target_control).children().unbind('click');
-      break
-     case 0:
-      jQuery(target_control).fadeIn(500);
-      jQuery(target_control).children().unbind('click');
-      break;
-     case 1:
-      jQuery(target_control).children().click(function () {return false;});
-      jQuery(target_caption).fadeOut(500);
-      jQuery(target_control).fadeOut(500);
-       break;
-      case 2:
-        jQuery(target_control).fadeIn(500);
-        jQuery(target_control).children().unbind('click'); 
-        break;
-        case 3:
-           jQuery(target_control).children().click(function () {return false;});
-           jQuery(target_caption).fadeOut(500);
-           jQuery(target_control).fadeOut(500);
-           break;
-          case 5:
-            jQuery(target_control).children().click(function () {return false;});
-            jQuery(target_caption).fadeOut(500);
-            jQuery(target_control).fadeOut(500);
-            break;
-          default:
-            break;
-    }
-};
-
-jQuery(window).bind('load', function(){
-  jQuery(".carousel-caption").fadeIn(500);
-  jQuery(".controls").fadeIn(500);
- });
-
-jQuery('.carousel').bind('slid.bs.carousel', function (event) {
-   jQuery(".controls").fadeIn(500);
-});
