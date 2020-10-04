@@ -98,21 +98,11 @@ const movePath = {
 const tween = new TimelineLite();
 
 
-tween.add(
 
-    TweenLite.to('.issSelector',0.1, {
-        // bezier: flightPath,
-        height:"100vh",
-
-        
-        ease:Power1.easeInOut
-        
-    })
-)
 
 tween.add(
 
-    TweenLite.to('.paleDot',10, {
+    TweenLite.to('.paleDot',90, {
         bezier: movePath,
         // scale:100,
         opacity:0,
@@ -125,7 +115,7 @@ tween.add(
 
 tween.add(
 
-    TweenLite.to('.issInfoCardWrapper',10, {
+    TweenLite.to('.issInfoCardWrapper',20, {
         delay:10,
         // bezier: flightPath,
         y:100,
@@ -141,10 +131,10 @@ tween.add(
 
 tween.add(
 
-    TweenLite.to('.paper',10, {
-        delay:10,
+    TweenLite.to('.paper',80, {
+        delay:5,
         // bezier: flightPath,
-        scale:100,
+        scale:80,
         opacity:0,
 
         
@@ -158,7 +148,7 @@ tween.add(
 
 
 tween.add(
-    TweenLite.to('.satellite',1, {
+    TweenLite.to('.satellite',40, {
         bezier: flightPath,
         scale:2,
     })
@@ -166,7 +156,7 @@ tween.add(
     
 )
 tween.add(
-    TweenLite.to('.satellite2',1, {
+    TweenLite.to('.satellite2',40, {
         bezier: flightPath2,
         scale:1.3,
     })
@@ -174,7 +164,7 @@ tween.add(
 
 
 tween.add(
-    TweenLite.to('.satellite3',1, {
+    TweenLite.to('.satellite3',40, {
         bezier: flightPath3,
         scale:2,
     }, 0)
@@ -197,7 +187,7 @@ tween.add(
 
 
 tween.add(
-    TweenLite.to('.satellite4',1, {
+    TweenLite.to('.satellite4',40, {
         bezier: flightPath4,
         scale:2,
     }, 0)
@@ -206,7 +196,7 @@ tween.add(
 )
 
 tween.add(
-    TweenLite.to('.satellite5',1, {
+    TweenLite.to('.satellite5',40, {
         bezier: flightPath5,
         scale:1.3,
     }, 0)
@@ -215,7 +205,7 @@ tween.add(
 )
 
 tween.add(
-    TweenLite.to('.satellite6',1, {
+    TweenLite.to('.satellite6',40, {
         bezier: flightPath6,
         scale:1.3,
     }, 0)
@@ -226,7 +216,7 @@ tween.add(
 tween.add(
 
     TweenLite.to('.ATrainWrapper',10, {
-        delay:10,
+        delay:20,
         // bezier: flightPath,
         opacity:0,
 
